@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UbicaTec</string>
+    <string name="prefs_file">com.ubicatec.PREFERENCE_FILE_KEY</string>
 </resources>

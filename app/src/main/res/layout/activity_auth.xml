@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AuthActivity">
+
+        <ImageView
+            android:id="@+id/FotoDelTec"
+            android:layout_width="424dp"
+            android:layout_height="214dp"
+            android:contentDescription="fotoTecMisantla"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.538"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/tecnol_gico" />
+
+        <TextView
+            android:id="@+id/txtUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="Actualmente sólo se puede iniciar sesión y registrar utilizando una cuenta de Google."
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FotoDelTec" />
+
+        <Button
+            android:id="@+id/botonIngresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="151dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="151dp"
+            android:onClick="nextView"
+            android:text="Ingresar"
+            app:icon="@drawable/icono_google"
+            app:iconGravity="start"
+            app:iconSize="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+
+        <TextView
+            android:id="@+id/txtSiguenos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="Síguenos"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/botonIngresar" />
+
+        <ImageView
+            android:id="@+id/logoTwitter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:contentDescription="twitter"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/logoInstagram"
+            app:layout_constraintStart_toEndOf="@+id/logoFacebook"
+            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintVertical_bias="0.058"
+            app:srcCompat="@drawable/icono_twitter" />
+
+        <TextView
+            android:id="@+id/txtTwitter"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            android:text="Twitter"
+            app:layout_constraintBottom_toTopOf="@+id/logoTwitter"
+            app:layout_constraintEnd_toStartOf="@+id/txtInstagram"
+            app:layout_constraintStart_toEndOf="@+id/txtFacebook" />
+
+        <ImageView
+            android:id="@+id/logoInstagram"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:contentDescription="instagram"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/logoYoutube"
+            app:layout_constraintStart_toEndOf="@+id/logoTwitter"
+            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintVertical_bias="0.058"
+            app:srcCompat="@drawable/icono_instagram" />
+
+        <TextView
+            android:id="@+id/txtInstagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Instagram"
+            app:layout_constraintBottom_toTopOf="@+id/logoInstagram"
+            app:layout_constraintEnd_toStartOf="@+id/txtYoutube"
+            app:layout_constraintStart_toEndOf="@+id/txtTwitter" />
+
+        <ImageView
+            android:id="@+id/logoYoutube"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:contentDescription="youtube"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintVertical_bias="0.058"
+            app:srcCompat="@drawable/icono_youtube" />
+
+        <TextView
+            android:id="@+id/txtFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="4dp"
+            android:text="Facebook"
+            app:layout_constraintBottom_toTopOf="@+id/logoFacebook"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtYoutube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
+            android:text="Youtube"
+            app:layout_constraintBottom_toTopOf="@+id/logoYoutube"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="531dp" />
+
+        <ImageView
+            android:id="@+id/logoFacebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:contentDescription="facebook"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintVertical_bias="0.058"
+            app:srcCompat="@drawable/icono_facebook" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="56dp" />
+
+        <TextView
+            android:id="@+id/txtDesarrolladores"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:text="Aplicación desarrollada por LaraKnife, Jovany y Moises. Aún en desarrollo, ver 1.0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
