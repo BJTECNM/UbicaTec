@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "309359814894",
+    "project_id": "ubicatec-cb682",
+    "storage_bucket": "ubicatec-cb682.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309359814894:android:5307459c79eade9f7aebff",
+        "android_client_info": {
+          "package_name": "com.ubicatec"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309359814894-h4471sr2dh3ls60gugg0801buu0fput4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ubicatec",
+            "certificate_hash": "d7496c7b78d3d90dd8e4758df1f9cd38264f679c"
+          }
+        },
+        {
+          "client_id": "309359814894-uule3gai3dcttpuefpu4t5jmj9e1k9pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaPMBfbVUBmL6uWk5cI1ru8Sybl8p-hlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309359814894-jcsj3dk9jaf9bp5njvjv04fcsacg4j3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
