@@ -90,6 +90,7 @@ class AuthActivity : AppCompatActivity() {
             putExtra("provider", provider.name)
         }
         startActivity(homeIntent)
+        finish()
     }
 
     @Deprecated("Deprecated in Java")

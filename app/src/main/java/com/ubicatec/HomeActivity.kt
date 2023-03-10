@@ -3,8 +3,8 @@ package com.ubicatec
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.ubicatec.databinding.ActivityHomeBinding
 
@@ -35,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
 
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, AuthActivity::class.java))
-            //onBackPressed()
+            finish()
         }
 
         binding.btnRecordatorio.setOnClickListener {
