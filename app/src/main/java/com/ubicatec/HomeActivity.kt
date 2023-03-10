@@ -13,22 +13,30 @@ enum class ProviderType {
 }
 
 class HomeActivity : AppCompatActivity() {
-    val binding = ActivityHomeBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val bundle : Bundle? = intent.extras
         val email : String? = bundle?.getString("email")
         val provider : String? = bundle?.getString("provider")
-        setup(email ?: "", provider ?: "")
+        //setup(email ?: "", provider ?: "")
 
         val prefs : SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         prefs.putString("email", email)
         prefs.putString("provider", provider)
         prefs.apply()
 
+        binding.btnLogOut.setOnClickListener {
+            prefs.clear()
+            prefs.apply()
+
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, AuthActivity::class.java))
+            //onBackPressed()
+        }
         /*
         binding.botonCrearRemind.setOnClickListener {
             startActivity(Intent(applicationContext, CrearRecordatorio::class.java))
@@ -45,14 +53,4 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun setup(email: String, provider: String){
-        binding.btnLogOut.setOnClickListener {
-            val prefs : SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-            prefs.clear()
-            prefs.apply()
-
-            FirebaseAuth.getInstance().signOut()
-            onBackPressed()
-        }
-    }
 }

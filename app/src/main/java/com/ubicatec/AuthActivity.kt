@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -23,12 +22,11 @@ class AuthActivity : AppCompatActivity() {
     val youtubeLink = "https://www.youtube.com"
     val twitterLink = "https://www.twitter.com"
     private val ecoSesion = 100
-    val binding = ActivityAuthBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         Thread.sleep(2000)
         super.onCreate(savedInstanceState)
+        val binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val analytics = FirebaseAnalytics.getInstance(this)
@@ -36,9 +34,20 @@ class AuthActivity : AppCompatActivity() {
         bundle.putString("message", "Integración de Firebase completa")
         analytics.logEvent("InitScreen", bundle)
 
-        setup()
         session()
 
+        binding.botonIngresar.setOnClickListener {
+            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+
+            val googleClient : GoogleSignInClient = GoogleSignIn.getClient(this, googleConf)
+            googleClient.signOut()
+            startActivityForResult(googleClient.signInIntent, ecoSesion)
+        }
+
+        // Enlaces Logos
         binding.logoFacebook.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(facebookLink)))
         }
@@ -57,34 +66,14 @@ class AuthActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding.root.visibility = View.VISIBLE
-    }
-
     private fun session(){
         val prefs : SharedPreferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
         val email : String? = prefs.getString("email", null)
         val provider : String? = prefs.getString("provider", null)
 
         if (email != null && provider != null) {
-            binding.root.visibility = View.INVISIBLE
             showHome(email, ProviderType.valueOf(provider))
         }
-    }
-
-    private fun setup(){
-        binding.botonIngresar.setOnClickListener {
-            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
-
-            val googleClient : GoogleSignInClient = GoogleSignIn.getClient(this, googleConf)
-            googleClient.signOut()
-            startActivityForResult(googleClient.signInIntent, ecoSesion)
-        }
-
     }
 
     private fun showAlert() {
