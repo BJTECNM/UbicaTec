@@ -24,7 +24,6 @@ class AuthActivity : AppCompatActivity() {
     private val ecoSesion = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Thread.sleep(2000)
         super.onCreate(savedInstanceState)
         val binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
