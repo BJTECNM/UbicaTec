@@ -13,7 +13,7 @@
         tools:context=".AuthActivity">
 
         <ImageView
-            android:id="@+id/FotoDelTec"
+            android:id="@+id/imgTec"
             android:layout_width="424dp"
             android:layout_height="214dp"
             android:contentDescription="fotoTecMisantla"
@@ -24,7 +24,7 @@
             app:srcCompat="@drawable/tecnol_gico" />
 
         <TextView
-            android:id="@+id/txtUsuario"
+            android:id="@+id/infoLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -35,10 +35,10 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FotoDelTec" />
+            app:layout_constraintTop_toBottomOf="@+id/imgTec" />
 
         <Button
-            android:id="@+id/botonIngresar"
+            android:id="@+id/btnLogIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="151dp"
@@ -51,10 +51,10 @@
             app:iconSize="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/infoLogin" />
 
         <TextView
-            android:id="@+id/txtSiguenos"
+            android:id="@+id/txtRedesSociales"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -62,10 +62,10 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/botonIngresar" />
+            app:layout_constraintTop_toBottomOf="@+id/btnLogIn" />
 
         <ImageView
-            android:id="@+id/logoTwitter"
+            android:id="@+id/iconTwitter"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
@@ -74,25 +74,25 @@
             android:contentDescription="twitter"
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/logoInstagram"
-            app:layout_constraintStart_toEndOf="@+id/logoFacebook"
-            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintEnd_toStartOf="@+id/iconInstagram"
+            app:layout_constraintStart_toEndOf="@+id/iconFacebook"
+            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
             app:layout_constraintVertical_bias="0.058"
             app:srcCompat="@drawable/icono_twitter" />
 
         <TextView
-            android:id="@+id/txtTwitter"
+            android:id="@+id/redTwitter"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:gravity="center"
             android:text="Twitter"
-            app:layout_constraintBottom_toTopOf="@+id/logoTwitter"
-            app:layout_constraintEnd_toStartOf="@+id/txtInstagram"
-            app:layout_constraintStart_toEndOf="@+id/txtFacebook" />
+            app:layout_constraintBottom_toTopOf="@+id/iconTwitter"
+            app:layout_constraintEnd_toStartOf="@+id/redInstagram"
+            app:layout_constraintStart_toEndOf="@+id/redFacebook" />
 
         <ImageView
-            android:id="@+id/logoInstagram"
+            android:id="@+id/iconInstagram"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
@@ -101,24 +101,24 @@
             android:contentDescription="instagram"
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/logoYoutube"
-            app:layout_constraintStart_toEndOf="@+id/logoTwitter"
-            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintEnd_toStartOf="@+id/iconYoutube"
+            app:layout_constraintStart_toEndOf="@+id/iconTwitter"
+            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
             app:layout_constraintVertical_bias="0.058"
             app:srcCompat="@drawable/icono_instagram" />
 
         <TextView
-            android:id="@+id/txtInstagram"
+            android:id="@+id/redInstagram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="Instagram"
-            app:layout_constraintBottom_toTopOf="@+id/logoInstagram"
-            app:layout_constraintEnd_toStartOf="@+id/txtYoutube"
-            app:layout_constraintStart_toEndOf="@+id/txtTwitter" />
+            app:layout_constraintBottom_toTopOf="@+id/iconInstagram"
+            app:layout_constraintEnd_toStartOf="@+id/redYoutube"
+            app:layout_constraintStart_toEndOf="@+id/redTwitter" />
 
         <ImageView
-            android:id="@+id/logoYoutube"
+            android:id="@+id/iconYoutube"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
@@ -129,28 +129,28 @@
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
             app:layout_constraintVertical_bias="0.058"
             app:srcCompat="@drawable/icono_youtube" />
 
         <TextView
-            android:id="@+id/txtFacebook"
+            android:id="@+id/redFacebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="4dp"
             android:text="Facebook"
-            app:layout_constraintBottom_toTopOf="@+id/logoFacebook"
+            app:layout_constraintBottom_toTopOf="@+id/iconFacebook"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/txtYoutube"
+            android:id="@+id/redYoutube"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="4dp"
             android:text="Youtube"
-            app:layout_constraintBottom_toTopOf="@+id/logoYoutube"
+            app:layout_constraintBottom_toTopOf="@+id/iconYoutube"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -161,7 +161,7 @@
             app:layout_constraintGuide_begin="531dp" />
 
         <ImageView
-            android:id="@+id/logoFacebook"
+            android:id="@+id/iconFacebook"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="28dp"
@@ -172,7 +172,7 @@
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSiguenos"
+            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
             app:layout_constraintVertical_bias="0.058"
             app:srcCompat="@drawable/icono_facebook" />
 
@@ -184,7 +184,7 @@
             app:layout_constraintGuide_begin="56dp" />
 
         <TextView
-            android:id="@+id/txtDesarrolladores"
+            android:id="@+id/infoDebs"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"

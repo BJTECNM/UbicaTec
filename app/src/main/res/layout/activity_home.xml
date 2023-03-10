@@ -42,7 +42,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/botonCrearRemind"
+            android:id="@+id/btnRecordatorio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -59,28 +59,17 @@
             android:text="Cerrar Sesión"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/botonCrearRemind" />
+            app:layout_constraintTop_toBottomOf="@+id/btnRecordatorio" />
 
         <Button
-            android:id="@+id/botonDocentes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Docentes"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/botonAulas"
-            app:layout_constraintHorizontal_bias="0.631"
-            app:layout_constraintStart_toEndOf="@+id/btnLogOut"
-            app:layout_constraintTop_toBottomOf="@+id/botonCrearRemind" />
-
-        <Button
-            android:id="@+id/botonAulas"
+            android:id="@+id/btnAula"
             android:layout_width="86dp"
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"
             android:text="Aulas"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/botonCrearRemind" />
+            app:layout_constraintTop_toBottomOf="@+id/btnRecordatorio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

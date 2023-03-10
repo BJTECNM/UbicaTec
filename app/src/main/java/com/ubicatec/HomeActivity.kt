@@ -37,19 +37,14 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, AuthActivity::class.java))
             //onBackPressed()
         }
-        /*
-        binding.botonCrearRemind.setOnClickListener {
-            startActivity(Intent(applicationContext, CrearRecordatorio::class.java))
+
+        binding.btnRecordatorio.setOnClickListener {
+            startActivity(Intent(applicationContext, RecordatorioActivity::class.java))
         }
 
-        binding.botonDocentes.setOnClickListener {
-            startActivity(Intent(applicationContext, Docente::class.java))
+        binding.btnAula.setOnClickListener {
+            startActivity(Intent(applicationContext, AulaActivity::class.java))
         }
-
-        binding.botonAulas.setOnClickListener {
-            startActivity(Intent(applicationContext, Aulas::class.java))
-        }
-         */
 
     }
 

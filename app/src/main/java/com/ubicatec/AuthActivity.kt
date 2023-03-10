@@ -35,7 +35,7 @@ class AuthActivity : AppCompatActivity() {
 
         session()
 
-        binding.botonIngresar.setOnClickListener {
+        binding.btnLogIn.setOnClickListener {
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -47,19 +47,19 @@ class AuthActivity : AppCompatActivity() {
         }
 
         // Enlaces Logos
-        binding.logoFacebook.setOnClickListener {
+        binding.iconFacebook.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(facebookLink)))
         }
 
-        binding.logoTwitter.setOnClickListener {
+        binding.iconTwitter.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(twitterLink)))
         }
 
-        binding.logoInstagram.setOnClickListener {
+        binding.iconInstagram.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(instagramLink)))
         }
 
-        binding.logoYoutube.setOnClickListener {
+        binding.iconYoutube.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(youtubeLink)))
         }
 
