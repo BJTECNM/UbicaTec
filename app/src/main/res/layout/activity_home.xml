@@ -7,69 +7,52 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".HomeActivity">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtPendientes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Pendientes"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="584dp" />
 
         <LinearLayout
-            android:id="@+id/recordatorios"
-            android:layout_width="339dp"
-            android:layout_height="387dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="32dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.072">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btnRecordatorio"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:insetLeft="8dp"
+                android:insetRight="8dp"
                 android:text="Recordatorio"
-                android:textSize="20sp" />
+                app:icon="@android:drawable/ic_input_add" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btnAula"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recordatorio"
-                android:textSize="20sp" />
+                android:layout_weight="1"
+                android:insetLeft="8dp"
+                android:insetRight="8dp"
+                android:text="Aulas"
+                app:icon="@android:drawable/ic_menu_search" />
         </LinearLayout>
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/btnRecordatorio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:text="Crear recordatorio"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recordatorios" />
-
-        <Button
-            android:id="@+id/btnLogOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Cerrar Sesión"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnRecordatorio" />
-
-        <Button
-            android:id="@+id/btnAula"
-            android:layout_width="86dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="20dp"
-            android:text="Aulas"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnRecordatorio" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
