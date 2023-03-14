@@ -15,15 +15,6 @@
         android:theme="@style/Theme.UbicaTec"
         tools:targetApi="31">
         <activity
-            android:name=".SegundaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".item_row"
-            android:exported="false" />
-        <activity
-            android:name=".PruebaRecordatorioActivity"
-            android:exported="false" />
-        <activity
             android:name=".AulaActivity"
             android:exported="false" />
         <activity
