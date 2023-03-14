@@ -7,194 +7,147 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AuthActivity">
+        android:orientation="vertical">
+        <include layout="@layout/simpletoolbar"/>
 
         <ImageView
             android:id="@+id/imgTec"
-            android:layout_width="424dp"
-            android:layout_height="214dp"
-            android:contentDescription="fotoTecMisantla"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.538"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
             app:srcCompat="@drawable/tecnol_gico" />
 
         <TextView
-            android:id="@+id/infoLogin"
-            android:layout_width="0dp"
+            android:id="@+id/infoSesionRegistro"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="18dp"
             android:gravity="center"
-            android:text="Actualmente sólo se puede iniciar sesión y registrar utilizando una cuenta de Google."
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgTec" />
+            android:text="Actualmenbte sólo se puede iniciar sesión y registrar, utilizando una cuenta de Google."
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnLogIn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="151dp"
+            android:layout_marginStart="64dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="151dp"
-            android:onClick="nextView"
-            android:text="Ingresar"
+            android:layout_marginEnd="64dp"
+            android:gravity="center"
+            android:text="INGRESAR"
+            android:textSize="20sp"
             app:icon="@drawable/icono_google"
-            app:iconGravity="start"
-            app:iconSize="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoLogin" />
+            app:iconSize="32dp" />
 
         <TextView
-            android:id="@+id/txtRedesSociales"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtSiguenos"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
+            android:gravity="center"
             android:text="Síguenos"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogIn" />
+            android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/iconTwitter"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:clickable="true"
-            android:contentDescription="twitter"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iconInstagram"
-            app:layout_constraintStart_toEndOf="@+id/iconFacebook"
-            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
-            app:layout_constraintVertical_bias="0.058"
-            app:srcCompat="@drawable/icono_twitter" />
-
-        <TextView
-            android:id="@+id/redTwitter"
-            android:layout_width="50dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:gravity="center"
-            android:text="Twitter"
-            app:layout_constraintBottom_toTopOf="@+id/iconTwitter"
-            app:layout_constraintEnd_toStartOf="@+id/redInstagram"
-            app:layout_constraintStart_toEndOf="@+id/redFacebook" />
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iconInstagram"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:clickable="true"
-            android:contentDescription="instagram"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iconYoutube"
-            app:layout_constraintStart_toEndOf="@+id/iconTwitter"
-            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
-            app:layout_constraintVertical_bias="0.058"
-            app:srcCompat="@drawable/icono_instagram" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Facebook" />
 
-        <TextView
-            android:id="@+id/redInstagram"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Twitter" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Instagram" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="YouTube" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="Instagram"
-            app:layout_constraintBottom_toTopOf="@+id/iconInstagram"
-            app:layout_constraintEnd_toStartOf="@+id/redYoutube"
-            app:layout_constraintStart_toEndOf="@+id/redTwitter" />
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/iconYoutube"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="24dp"
-            android:clickable="true"
-            android:contentDescription="youtube"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
-            app:layout_constraintVertical_bias="0.058"
-            app:srcCompat="@drawable/icono_youtube" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/redFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="4dp"
-            android:text="Facebook"
-            app:layout_constraintBottom_toTopOf="@+id/iconFacebook"
-            app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:id="@+id/iconFacebook"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/icono_facebook"
+                    tools:srcCompat="@drawable/icono_facebook" />
 
-        <TextView
-            android:id="@+id/redYoutube"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="4dp"
-            android:text="Youtube"
-            app:layout_constraintBottom_toTopOf="@+id/iconYoutube"
-            app:layout_constraintEnd_toEndOf="parent" />
+                <ImageView
+                    android:id="@+id/iconTwitter"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/icono_twitter"
+                    tools:srcCompat="@drawable/icono_twitter" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="531dp" />
+                <ImageView
+                    android:id="@+id/iconInstagram"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/icono_instagram"
+                    tools:srcCompat="@drawable/icono_instagram" />
 
-        <ImageView
-            android:id="@+id/iconFacebook"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:clickable="true"
-            android:contentDescription="facebook"
-            android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRedesSociales"
-            app:layout_constraintVertical_bias="0.058"
-            app:srcCompat="@drawable/icono_facebook" />
+                <ImageView
+                    android:id="@+id/iconYoutube"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/icono_youtube"
+                    tools:srcCompat="@drawable/icono_youtube" />
+            </LinearLayout>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="56dp" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="19dp"
+                android:gravity="center"
+                android:text="Aplicación desarrollada por LaraKnife, Jovany y Moises. Aún en desarrollo, ver 1.0.0"
+                android:textSize="14sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/infoDebs"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="40dp"
-            android:gravity="center"
-            android:text="Aplicación desarrollada por LaraKnife, Jovany y Moises. Aún en desarrollo, ver 1.0.0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

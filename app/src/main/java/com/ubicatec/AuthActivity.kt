@@ -1,12 +1,13 @@
 package com.ubicatec
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -27,6 +28,9 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val salir = findViewById<ImageView>(R.id.btnSalir)
+        salir.isVisible=false
 
         val analytics = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
@@ -66,7 +70,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun session(){
-        val prefs : SharedPreferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val prefs : SharedPreferences = getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE)
         val email : String? = prefs.getString("email", null)
         val provider : String? = prefs.getString("provider", null)
 
