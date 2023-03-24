@@ -10,8 +10,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <include layout="@layout/simpletoolbar"/>
+        android:orientation="vertical"
+        android:theme="@style/Theme.UbicaTec">
+
+        <include
+            style="@style/Theme.UbicaTec"
+            layout="@layout/simpletoolbar" />
 
         <ImageView
             android:id="@+id/imgTec"
