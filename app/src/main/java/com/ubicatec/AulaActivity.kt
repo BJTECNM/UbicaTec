@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import com.google.firebase.firestore.FirebaseFirestore
 import com.ubicatec.databinding.ActivityAulaBinding
 
+
 @Suppress("UnusedImport")
 class AulaActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class AulaActivity : AppCompatActivity() {
         guardar.isVisible=false
 
         db.collection("aulas").document("Aula 16").get().addOnSuccessListener {
-            binding.aula1.setText(it.get("nombreAula")as String ?)
+            textView.setText(it.get("nombreAula")as String ?)  // <-- aquí está el puto error
         }
 
     }
