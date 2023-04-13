@@ -21,7 +21,7 @@ class AulaActivity : AppCompatActivity() {
         guardar.isVisible=false
 
         db.collection("aulas").document("Aula 16").get().addOnSuccessListener {
-            textView.setText(it.get("nombreAula")as String ?)  // <-- aquí está el puto error
+            binding.aula1.setText(it.get("nombreAula")as String ?)  // <-- aquí está el puto error
         }
 
     }
