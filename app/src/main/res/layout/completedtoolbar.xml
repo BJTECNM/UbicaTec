@@ -2,10 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/green">
+    android:background="?attr/colorPrimary">
 
     <RelativeLayout
-        style="@style/Theme.UbicaTecLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
