@@ -20,8 +20,8 @@ class AulaActivity : AppCompatActivity() {
         val guardar = findViewById<ImageView>(R.id.btnSave)
         guardar.isVisible=false
 
-        db.collection("aulas").document("Aula 16").get().addOnSuccessListener {
-            binding.aula1.setText(it.get("nombreAula")as String ?)  // <-- aquí está el puto error
+        db.collection("aulas").document("aula1").get().addOnSuccessListener {
+            binding.aula1.setText(it.get("nombreAula")as String ?)
         }
 
     }
