@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "309359814894-ik3547k3mfqe025ai0egbugso075kmop.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ubicatec",
+            "certificate_hash": "2240bd3fbf4bdb3fa3eb46f59015eb02b181ac6c"
+          }
+        },
+        {
           "client_id": "309359814894-j9ej90o0uvv2frgclmd3dq1re933s3vj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
