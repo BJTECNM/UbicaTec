@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <dist:module dist:instant="true" />
 
@@ -15,6 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UbicaTec"
         tools:targetApi="31">
+        <activity
+            android:name=".UbicAulaActivity"
+            android:exported="false"
+            android:label="@string/title_activity_ubic_aula"
+            android:theme="@style/Theme.UbicaTec" />
         <activity
             android:name=".AulaActivity"
             android:exported="false" />

@@ -1,6 +1,7 @@
 package com.ubicatec
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -52,9 +53,17 @@ class AulaActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(applicationContext, "ID ${idAulas[position]}", Toast.LENGTH_LONG).show()
+                //Toast.makeText(applicationContext, "ID ${idAulas[position]}", Toast.LENGTH_LONG).show()
+                showAula(idAulas[position])
             }
         }
+    }
+
+    private fun showAula(id: String) {
+        val ubicAula = Intent(this, UbicAulaActivity::class.java).apply {
+            putExtra("idAula", id)
+        }
+        startActivity(ubicAula)
     }
 
 }
