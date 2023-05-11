@@ -28,7 +28,8 @@ class UbicAulaActivity : AppCompatActivity() {
                     document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    binding.llenadoInfo.text=("Prueba de función. Viendo "+document.data)
+                    binding.titulo.text=(document.data!!["nombreAula"].toString())
+                    binding.llenadoInfo.text=("Descripción: "+document.data!!["descripcion"])
                 } else {
                     Log.d(TAG, "No such document")
                 }
