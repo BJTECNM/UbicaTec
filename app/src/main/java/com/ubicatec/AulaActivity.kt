@@ -31,7 +31,7 @@ class AulaActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
-                    nombreAulas= mutableListOf(document.data["nombreAula"].toString())
+                    nombreAulas.add(document.data["nombreAula"].toString())
                 }
                 arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,nombreAulas)
                 lista.adapter = arrayAdapter
