@@ -2,6 +2,7 @@ package com.ubicatec
 
 import android.app.ProgressDialog
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.firebase.firestore.FirebaseFirestore
@@ -41,6 +43,21 @@ class AulaActivity : AppCompatActivity() {
         progressDialog.setMessage("Cargando lista de salones")
         progressDialog.show()
 
+        // Dialogo para mostrar en caso de error
+        val alertDialog: AlertDialog? = this?.let {
+            val builder = AlertDialog.Builder(it)
+            builder.apply {
+                setPositiveButton("OK",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        finish()
+                        //startActivity(Intent(applicationContext, HomeActivity::class.java))
+                    })
+            }
+            builder.setTitle("Error")
+            builder.setMessage("Error al cargar\nVerfifique su conexión a Internet y vuelva a intentarlo")
+            builder.create()
+        }
+
         // Solicitud de la lista de aulas a la base de datos/Firebase
         db.collection("aulas")
             .get()
@@ -56,6 +73,7 @@ class AulaActivity : AppCompatActivity() {
             }
             .addOnFailureListener { exception ->
                 progressDialog.dismiss()
+                alertDialog!!.show()
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 

@@ -2,10 +2,12 @@ package com.ubicatec
 
 import android.app.ProgressDialog
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
@@ -35,6 +37,21 @@ class UbicAulaActivity : AppCompatActivity() {
         progressDialog.setMessage("Cargando datos del salón")
         progressDialog.show()
 
+        // Dialogo para mostrar en caso de error
+        val alertDialog: AlertDialog? = this?.let {
+            val builder = AlertDialog.Builder(it)
+            builder.apply {
+                setPositiveButton("OK",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        finish()
+                        //startActivity(Intent(applicationContext, HomeActivity::class.java))
+                    })
+            }
+            builder.setTitle("Error")
+            builder.setMessage("Error al cargar\nVerfifique su conexión a Internet y vuelva a intentarlo")
+            builder.create()
+        }
+
         // Solicitud de la info del aula a la base de datos/Firebase
         if (idAula != null) {
             db.collection("aulas").document(idAula).get().addOnSuccessListener {
@@ -50,11 +67,13 @@ class UbicAulaActivity : AppCompatActivity() {
                         .into(imageView)
                 } else {
                     progressDialog.dismiss()
+                    alertDialog!!.show()
                     Log.d(TAG, "No such document")
                 }
             }
                 .addOnFailureListener { exception ->
                     progressDialog.dismiss()
+                    alertDialog!!.show()
                     Log.d(TAG, "get failed with ", exception)
             }
         }
