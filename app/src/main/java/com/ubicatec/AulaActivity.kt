@@ -1,5 +1,6 @@
 package com.ubicatec
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -24,16 +25,27 @@ class AulaActivity : AppCompatActivity() {
         val binding = ActivityAulaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val lista = binding.nameAulas
-        var arrayAdapter : ArrayAdapter<*>
-        var nombreAulas = mutableListOf("")
-        var idAulas = mutableListOf("")
+        // Ocultar boton de la barra de estado personalizada
         val guardar = findViewById<ImageView>(R.id.btnSave)
         guardar.isVisible=false
 
+        // Variables para manejar la información recibida de Firebase
+        val lista = binding.nameAulas
+        var arrayAdapter : ArrayAdapter<*>
+        var nombreAulas = mutableListOf<String>()
+        var idAulas = mutableListOf<String>()
+
+        // Dialogo de progreso, para mostrar mientras no se ha terminado de recibir/procesar la info
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Cargando")
+        progressDialog.setMessage("Cargando lista de salones")
+        progressDialog.show()
+
+        // Solicitud de la lista de aulas a la base de datos/Firebase
         db.collection("aulas")
             .get()
             .addOnSuccessListener { documents ->
+                progressDialog.dismiss()
                 for (document in documents) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                     nombreAulas.add(document.data["nombreAula"].toString())
@@ -43,9 +55,11 @@ class AulaActivity : AppCompatActivity() {
                 lista.adapter = arrayAdapter
             }
             .addOnFailureListener { exception ->
+                progressDialog.dismiss()
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
+        // Identificar el elemento que se seleccione de la lista
         lista.onItemClickListener = object : AdapterView.OnItemClickListener{
             override fun onItemClick(
                 parent: AdapterView<*>?,
@@ -54,13 +68,12 @@ class AulaActivity : AppCompatActivity() {
                 id: Long
             ) {
                 //Toast.makeText(applicationContext, "ID ${idAulas[position]}", Toast.LENGTH_LONG).show()
-                if (idAulas[position]!=""){
-                    showAula(idAulas[position])
-                }
+                showAula(idAulas[position])
             }
         }
     }
 
+    // Función para iniciar la actividad donde se mostrará la info del aula seleccionada
     private fun showAula(id: String) {
         val ubicAula = Intent(this, UbicAulaActivity::class.java).apply {
             putExtra("idAula", id)

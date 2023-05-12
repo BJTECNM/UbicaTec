@@ -37,26 +37,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="12dp" />
 
-            <EditText
-                android:id="@+id/txtBusqueda"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:drawableStart="?android:attr/actionModeWebSearchDrawable"
-                android:ems="10"
-                android:gravity="left|center_vertical"
-                android:hint="Buscar Aula"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:singleLine="true"
-                android:text="" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="12dp" />
-
             <ListView
                 android:id="@+id/nameAulas"
                 android:layout_width="match_parent"
