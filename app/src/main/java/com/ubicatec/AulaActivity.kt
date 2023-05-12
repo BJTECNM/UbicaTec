@@ -54,7 +54,9 @@ class AulaActivity : AppCompatActivity() {
                 id: Long
             ) {
                 //Toast.makeText(applicationContext, "ID ${idAulas[position]}", Toast.LENGTH_LONG).show()
-                showAula(idAulas[position])
+                if (idAulas[position]!=""){
+                    showAula(idAulas[position])
+                }
             }
         }
     }
