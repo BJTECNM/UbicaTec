@@ -118,7 +118,7 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    // Función para iniciar la actividad donde se mostrará la info del aula seleccionada
+    // Función para iniciar la actividad donde se mostrará la info del recordatorio seleccionado
     private fun showRemind(id: String) {
         val contRemind = Intent(this, ShowRemindActivity::class.java).apply {
             putExtra("idRemind", id)
