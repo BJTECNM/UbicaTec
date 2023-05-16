@@ -1,16 +1,13 @@
 package com.ubicatec
 
 import android.app.ProgressDialog
-import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -50,7 +47,6 @@ class AulaActivity : AppCompatActivity() {
                 setPositiveButton("OK",
                     DialogInterface.OnClickListener { dialog, id ->
                         finish()
-                        //startActivity(Intent(applicationContext, HomeActivity::class.java))
                     })
             }
             builder.setTitle("Error")
@@ -62,19 +58,17 @@ class AulaActivity : AppCompatActivity() {
         db.collection("aulas")
             .get()
             .addOnSuccessListener { documents ->
-                progressDialog.dismiss()
                 for (document in documents) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
                     nombreAulas.add(document.data["nombreAula"].toString())
                     idAulas.add(document.id)
                 }
                 arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,nombreAulas)
                 lista.adapter = arrayAdapter
+                progressDialog.dismiss()
             }
-            .addOnFailureListener { exception ->
+            .addOnFailureListener {
                 progressDialog.dismiss()
                 alertDialog!!.show()
-                Log.w(TAG, "Error getting documents: ", exception)
             }
 
         // Identificar el elemento que se seleccione de la lista
@@ -85,7 +79,6 @@ class AulaActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                //Toast.makeText(applicationContext, "ID ${idAulas[position]}", Toast.LENGTH_LONG).show()
                 showAula(idAulas[position])
             }
         }

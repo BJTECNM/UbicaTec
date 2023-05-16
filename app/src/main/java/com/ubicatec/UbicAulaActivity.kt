@@ -1,11 +1,9 @@
 package com.ubicatec
 
 import android.app.ProgressDialog
-import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
@@ -29,7 +27,12 @@ class UbicAulaActivity : AppCompatActivity() {
         // Variables para manejar la información recibida de Firebase
         val bundle : Bundle? = intent.extras
         val idAula : String? = bundle?.getString("idAula")
-        val imageView = binding.imgDescripcion
+
+        // Variables auxiliares para manejar la información
+        val imgView1 = binding.img1
+        val imgView2 = binding.img2
+        val imgView3 = binding.img3
+        val imgView4 = binding.img4
 
         // Dialogo de progreso, para mostrar mientras no se ha terminado de recibir/procesar la info
         val progressDialog = ProgressDialog(this)
@@ -44,7 +47,6 @@ class UbicAulaActivity : AppCompatActivity() {
                 setPositiveButton("OK",
                     DialogInterface.OnClickListener { dialog, id ->
                         finish()
-                        //startActivity(Intent(applicationContext, HomeActivity::class.java))
                     })
             }
             builder.setTitle("Error")
@@ -57,25 +59,49 @@ class UbicAulaActivity : AppCompatActivity() {
             db.collection("aulas").document(idAula).get().addOnSuccessListener {
                     document ->
                 if (document != null) {
-                    progressDialog.dismiss()
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    binding.titulo.text = (document.data!!["nombreAula"].toString())
-                    binding.llenadoInfo.text = ("Descripción: ${document.data!!["descripcion"]}")
-                    var aux = document.data!!["imgDescripcion"].toString()
+                    var nombre = document.data?.get("nombreAula")?.toString()
+                    var txt1 = document.data!!["txt1"]?.toString()
+                    var txt2 = document.data!!["txt2"]?.toString()
+                    var txt3 = document.data!!["txt3"]?.toString()
+                    var txt4 = document.data!!["txt4"]?.toString()
+                    var img1 = document.data!!["img1"]?.toString()
+                    var img2 = document.data!!["img2"]?.toString()
+                    var img3 = document.data!!["img3"]?.toString()
+                    var img4 = document.data!!["img4"]?.toString()
+
+                    // Llenado de los TextView
+                    binding.titulo.text = nombre
+                    binding.txt1.text = txt1
+                    binding.txt2.text = txt2
+                    binding.txt3.text = txt3
+                    binding.txt4.text = txt4
+
+                    // Llenado de los ImageView
                     Glide.with(applicationContext)
-                        .load(aux)
-                        .into(imageView)
+                        .load(img1)
+                        .into(imgView1)
+                    Glide.with(applicationContext)
+                        .load(img2)
+                        .into(imgView2)
+                    Glide.with(applicationContext)
+                        .load(img3)
+                        .into(imgView3)
+                    Glide.with(applicationContext)
+                        .load(img4)
+                        .into(imgView4)
+
+                    progressDialog.dismiss()
+
                 } else {
                     progressDialog.dismiss()
                     alertDialog!!.show()
-                    Log.d(TAG, "No such document")
                 }
             }
-                .addOnFailureListener { exception ->
+                .addOnFailureListener {
                     progressDialog.dismiss()
                     alertDialog!!.show()
-                    Log.d(TAG, "get failed with ", exception)
             }
+
         }
     }
 }
