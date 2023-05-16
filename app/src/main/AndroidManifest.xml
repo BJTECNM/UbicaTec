@@ -17,6 +17,9 @@
         android:theme="@style/Theme.UbicaTec"
         tools:targetApi="31">
         <activity
+            android:name=".ShowRemindActivity"
+            android:exported="false" />
+        <activity
             android:name=".UbicAulaActivity"
             android:exported="false"
             android:label="@string/title_activity_ubic_aula"

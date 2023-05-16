@@ -21,8 +21,12 @@ class UbicAulaActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Ocultar boton de la barra de estado personalizada
-        val guardar = findViewById<ImageView>(R.id.btnSave)
-        guardar.isVisible=false
+        val save = findViewById<ImageView>(R.id.btnSave)
+        save.isVisible=false
+        val back = findViewById<ImageView>(R.id.btnBack)
+        back.setOnClickListener {
+            finish()
+        }
 
         // Variables para manejar la información recibida de Firebase
         val bundle : Bundle? = intent.extras
