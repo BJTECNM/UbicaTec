@@ -28,10 +28,16 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/nameRecordatorios"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
             android:layout_width="match_parent"
-            android:layout_height="584dp" />
+            android:layout_height="584dp">
+
+            <ListView
+                android:id="@+id/nameRecordatorios"
+                android:layout_width="match_parent"
+                android:layout_height="584dp"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

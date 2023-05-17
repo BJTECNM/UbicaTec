@@ -75,6 +75,25 @@ class AulaActivity : AppCompatActivity() {
                 alertDialog!!.show()
             }
 
+        binding.swipeAula.setOnRefreshListener {
+            nombreAulas.clear()
+            idAulas.clear()
+            db.collection("aulas")
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        nombreAulas.add(document.data["nombreAula"].toString())
+                        idAulas.add(document.id)
+                    }
+                    arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,nombreAulas)
+                    lista.adapter = arrayAdapter
+                }
+                .addOnFailureListener {
+                    alertDialog!!.show()
+                }
+            binding.swipeAula.isRefreshing = false
+        }
+
         // Identificar el elemento que se seleccione de la lista
         lista.onItemClickListener = object : AdapterView.OnItemClickListener{
             override fun onItemClick(

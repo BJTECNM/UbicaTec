@@ -37,10 +37,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="12dp" />
 
-            <ListView
-                android:id="@+id/nameAulas"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeAula"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
+
+                <ListView
+                    android:id="@+id/nameAulas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         </LinearLayout>
 

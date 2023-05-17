@@ -104,11 +104,10 @@ class HomeActivity : AppCompatActivity() {
                 alertDialog!!.show()
             }
 
-        binding.encabezado.setOnClickListener {
+        binding.swipe.setOnRefreshListener {
             nombreRecordatorios.clear()
             txtRecordatorios.clear()
             idRecordatorios.clear()
-            progressDialog.show()
             db.collection(uid)
                 .get()
                 .addOnSuccessListener { documents ->
@@ -119,12 +118,11 @@ class HomeActivity : AppCompatActivity() {
                     }
                     arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,nombreRecordatorios)
                     lista.adapter = arrayAdapter
-                    progressDialog.dismiss()
                 }
                 .addOnFailureListener {
-                    progressDialog.dismiss()
                     alertDialog!!.show()
                 }
+            binding.swipe.isRefreshing = false
         }
 
         // Identificar el elemento que se seleccione de la lista
