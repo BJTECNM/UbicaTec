@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -26,6 +25,7 @@ enum class ProviderType {
 class HomeActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
+    private val uid = Firebase.auth.currentUser!!.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +37,11 @@ class HomeActivity : AppCompatActivity() {
         val provider : String? = bundle?.getString("provider")
 
         // Identificador del usuario
-        val uid = Firebase.auth.currentUser!!.uid
         val lista = binding.nameRecordatorios
         var arrayAdapter : ArrayAdapter<*>
         var nombreRecordatorios = mutableListOf<String>()
         var idRecordatorios = mutableListOf<String>()
+        var txtRecordatorios = mutableListOf<String>()
 
         val prefs : SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         prefs.putString("email", email)
@@ -78,7 +78,7 @@ class HomeActivity : AppCompatActivity() {
             builder.apply {
                 setPositiveButton("OK",
                     DialogInterface.OnClickListener { dialog, id ->
-                        //finish()
+                        // No se hará nada especial
                     })
             }
             builder.setTitle("Error")
@@ -92,6 +92,7 @@ class HomeActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     nombreRecordatorios.add(document.data["nombreRemind"].toString())
+                    txtRecordatorios.add(document.data["txt"].toString())
                     idRecordatorios.add(document.id)
                 }
                 arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,nombreRecordatorios)
@@ -111,19 +112,33 @@ class HomeActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                showRemind(idRecordatorios[position])
-                Toast.makeText(applicationContext, "Seleccionó ${idRecordatorios[position]}", Toast.LENGTH_LONG).show()
+                alertMessage(nombreRecordatorios[position], txtRecordatorios[position])
+                //Toast.makeText(applicationContext, "Seleccionó ${txtRecordatorios[position]}", Toast.LENGTH_LONG).show()
             }
         }
 
     }
 
-    // Función para iniciar la actividad donde se mostrará la info del recordatorio seleccionado
-    private fun showRemind(id: String) {
-        val contRemind = Intent(this, ShowRemindActivity::class.java).apply {
-            putExtra("idRemind", id)
+    private fun alertMessage(name: String, texto: String) {
+        // Dialogo para mostrar en caso de error
+        val alertDialog2: AlertDialog? = this?.let {
+            val builder = AlertDialog.Builder(it)
+            builder.apply {
+                setPositiveButton("OK",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // Se quita el mensaje
+                    })
+                setNegativeButton("Borrar",
+                    DialogInterface.OnClickListener{ dialog, id ->
+                        // Se elimina el elemento que se está viendo
+                        db.collection(uid).document(name).delete()
+                    })
+            }
+            builder.setTitle(name)
+            builder.setMessage(texto)
+            builder.create()
         }
-        startActivity(contRemind)
+        alertDialog2!!.show()
     }
 
 }
