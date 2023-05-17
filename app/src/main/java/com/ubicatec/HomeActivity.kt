@@ -104,6 +104,29 @@ class HomeActivity : AppCompatActivity() {
                 alertDialog!!.show()
             }
 
+        binding.encabezado.setOnClickListener {
+            nombreRecordatorios.clear()
+            txtRecordatorios.clear()
+            idRecordatorios.clear()
+            progressDialog.show()
+            db.collection(uid)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        nombreRecordatorios.add(document.data["nombreRemind"].toString())
+                        txtRecordatorios.add(document.data["txt"].toString())
+                        idRecordatorios.add(document.id)
+                    }
+                    arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,nombreRecordatorios)
+                    lista.adapter = arrayAdapter
+                    progressDialog.dismiss()
+                }
+                .addOnFailureListener {
+                    progressDialog.dismiss()
+                    alertDialog!!.show()
+                }
+        }
+
         // Identificar el elemento que se seleccione de la lista
         lista.onItemClickListener = object : AdapterView.OnItemClickListener{
             override fun onItemClick(
@@ -113,7 +136,6 @@ class HomeActivity : AppCompatActivity() {
                 id: Long
             ) {
                 alertMessage(nombreRecordatorios[position], txtRecordatorios[position])
-                //Toast.makeText(applicationContext, "Seleccionó ${txtRecordatorios[position]}", Toast.LENGTH_LONG).show()
             }
         }
 
