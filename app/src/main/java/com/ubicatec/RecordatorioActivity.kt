@@ -13,6 +13,7 @@ import com.ubicatec.databinding.ActivityRecordatorioBinding
 class RecordatorioActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()
+    private val uid = Firebase.auth.currentUser!!.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,23 +26,6 @@ class RecordatorioActivity : AppCompatActivity() {
             finish()
         }
 
-        // Identificador del usuario
-        val uid = Firebase.auth.currentUser!!.uid
-
-        // Dialogo para mostrar en caso de error
-        val alertDialog: AlertDialog? = this?.let {
-            val builder = AlertDialog.Builder(it)
-            builder.apply {
-                setPositiveButton("OK",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // No se hará ninguna acción especial
-                    })
-            }
-            builder.setTitle("Error")
-            builder.setMessage("Asegurate de llenar ambos campos antes de guardar el recordatorio")
-            builder.create()
-        }
-
         // Acción del botón guardar
         save.setOnClickListener {
             var nombre = binding.nameRecordatorio.text.toString()
@@ -50,7 +34,7 @@ class RecordatorioActivity : AppCompatActivity() {
                 writeNewRemind(uid, nombre, txt)
                 finish()
             }else{
-                alertDialog!!.show()
+                errorMessage()
             }
 
         }
@@ -66,4 +50,21 @@ class RecordatorioActivity : AppCompatActivity() {
         db.collection(uid).document(id).set(remindHashMap)
     }
 
+    private fun errorMessage() {
+        // Dialogo para mostrar en caso de error
+        val alertDialog: AlertDialog? = this?.let {
+            val builder = AlertDialog.Builder(it)
+            builder.apply {
+                setPositiveButton("OK",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // No se hará ninguna acción especial
+                    })
+            }
+            builder.setTitle("Error")
+            builder.setMessage("Asegurate de llenar ambos campos antes de guardar el recordatorio")
+            builder.create()
+        }
+        alertDialog!!.show()
+    }
+    
 }
